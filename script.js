@@ -4,6 +4,14 @@
 var generateBtn = document.querySelector("#generate");
 var passwordLength;
 var userChoices;
+//create 4 different type of strings in this case lowercase, uppercase, numeric and special characters 
+var lowerCase = "abcdefghijklmnopqesrvxyz";
+var upperCase = "ABCDEFGHIJKLMNOPQERVXYZ";
+var numeric = "0123456789";
+var specialChar = "!@#$%^&*()";
+//create the structure for the possible passwords
+var possiblePassword = [];
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -24,7 +32,7 @@ var passwordLength = prompt ("How long should the password be?");
 console.log (passwordLength);
 //password length must be at least 8 characters and no more than 128 characters
 if (passwordLength <8 || passwordLength > 128) { 
- userChoices = alert ("bad choice");
+alert ("bad choice, you must choose between 8 and 128");
   return "";
 }
 //password confirm whether or not to include lowercase
@@ -42,15 +50,7 @@ console.log(includeSpecialCharacters);
 //password input should be chosen one of the character types
 
  if (includeLowercase == false && includeUppercase==false && includeNumeric ==false && includeSpecialCharacters==false) {
-  userChoices = alert("Please choose at least one of the criteria");
-
-//create 4 different type of strings in this case lowercase, uppercase, numeric and special characters 
-var lowerCase = "abcdefghijklmnopqesrvxyz";
-var upperCase = "ABCDEFGHIJKLMNOPQERVXYZ";
-var numeric = "0123456789";
-var specialChar = "!@#$%^&*()";
-//create the structure for the possible passwords
-var possiblePassword = "";
+  alert("Please choose at least one of the criteria");
 
 //create the statements for the users to choose or not to choose from the types of pw
 //user just choose one option out of 4
@@ -59,85 +59,85 @@ if (includeLowercase) {
   console.log(userChoices);
 }
   else if (includeNumeric) {
-    possiblePassword = upperCase;
+    userChoices = upperCase;
     console.log (userChoices);
   }
   else if (includeUppercase) {
-    possiblePassword = upperCase;
+    userChoices = upperCase;
     console.log (userChoices);
   }
   else if (includeSpecialCharacters) {
-      possiblePassword= specialChar;
+    userChoices = specialChar;
       console.log(userChoices);    
     }
   // user just choose 2 options out of 4 
   //lowercase and upper case
   else if (includeLowercase && includeUppercase) {
-    possiblePassword = lowerCase.concat(upperCase);
+    userChoices = lowerCase.concat(upperCase);
     console.log(userChoices);
   }
   //lowercase and numeric
   else if (includeLowercase && includeNumeric) {
-    possiblePassword = lowerCase.concat(numeric);
+    userChoices = lowerCase.concat(numeric);
     console.log(userChoices);
   }
   //lowercase and special characters
   else if (includeLowercase && includeSpecialCharacters) {
-    possiblePassword = lowerCase.concat(specialChar);
+    userChoices = lowerCase.concat(specialChar);
     console.log(userChoices);
   }
   //uppercase and numeric
   else if (includeUppercase && includeNumeric) {
-      possiblePassword = upperCase.concat(numeric);
+    userChoices = upperCase.concat(numeric);
       console.log(userChoices);
   }
   //uppercase and special characters
   else if (includeUppercase && includeSpecialCharacters) {
-        possiblePassword = upperCase.concat(specialChar);
+    userChoices = upperCase.concat(specialChar);
         console.log(userChoices);
   }
   //numeric and special characters
   else if (includeNumeric && includeSpecialCharacters) {
-          possiblePassword = numeric.concat(specialChar);
+    userChoices = numeric.concat(specialChar);
           console.log(userChoices);
   }
   //user choose 3 options out of 4
   //lowercase, uppercase and special
 if (includeLowercase && includeUppercase && includeSpecialCharacters) {
-    possiblePassword = lowerCase.concat(upperCase,specialChar);
+   userChoices= lowerCase.concat(upperCase,specialChar);
     console.log(userChoices);
   }
   //lowercase, uppercase and numeric 
   else if (includeLowercase && includeUppercase && includeNumeric) {
-      possiblePassword = lowerCase.concat(upperCase, numeric);
+    userChoices = lowerCase.concat(upperCase, numeric);
       console.log(userChoices);
   }
   //lowercase, special and numeric 
   else if (includeLowercase && includeSpecialCharacters && includeNumeric) {
-    possiblePassword = lowerCase.concat(specialChar, numeric);
+    userChoices = lowerCase.concat(specialChar, numeric);
     console.log(userChoices);
   }
   //uppercase, special and numeric
   else if (includeUppercase && includeSpecialCharacters && includeNumeric) {
-    possiblePassword = upperCase.concat(specialChar, numeric);
+    userChoices = upperCase.concat(specialChar, numeric);
     console.log(userChoices);
   }
   //user choose all 4 
  else if (includeLowercase && includeUppercase && includeNumeric && includeSpecialCharacters) {
-    possiblePassword = lowerCase.concat(upperCase, numeric, specialChar);
+  userChoices = lowerCase.concat(upperCase, numeric, specialChar);
     console.log(userChoices);
   }
   };
 
   //use for loop for making the random passwords based on the conditions of users
   for (var i = 0; i < passwordLength; i++) {
-  var choices = userChoices[Math.floor(Math.random()* userChoices.length)];
-  possiblePassword.push(choices);
-  console.log(choices);
+    var choices = userChoices[Math.floor(Math.random() * userChoices.length)];
+    possiblePassword.push(choices);
+    console.log(choices);
   }
   var password = possiblePassword.join("");
   console.log ("your password is: " + password);
   return password;
 }
-document.getElementById("password").value = password;
+// document.getElementById("password").value = password;
 
