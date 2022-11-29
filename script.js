@@ -60,7 +60,7 @@ if (includeLowercase) {
   console.log(userChoices);
 }
   else if (includeNumeric) {
-    userChoices = upperCase;
+    userChoices = numeric;
     console.log (userChoices);
   }
   else if (includeUppercase) {
