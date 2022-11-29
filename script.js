@@ -1,7 +1,9 @@
 // Assignment Code
-// GIVEN I need a new, secure password
+
 
 var generateBtn = document.querySelector("#generate");
+
+//create the new variables for the length of password and user's choices
 var passwordLength;
 var userChoices;
 //create 4 different type of strings in this case lowercase, uppercase, numeric and special characters 
@@ -19,7 +21,6 @@ function writePassword() {
 
   passwordText.value = password;
 }
-
 //  THEN I am presented with a series of prompts for password criteria
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
@@ -127,18 +128,20 @@ if (includeLowercase && includeUppercase && includeSpecialCharacters) {
   userChoices = lowerCase.concat(upperCase, numeric, specialChar);
     console.log(userChoices);
   }
-  // };
+  //create a new variable since the possiblePassword is array
 var choicesArray = userChoices.split("");
   //use for loop for making the random passwords based on the conditions of users
   for (var i = 0; i < passwordLength; i++) {
+    //use the random method so it will choose randomly base on userchoices
     var choices = choicesArray[Math.floor(Math.random() * choicesArray.length)];
     console.log(possiblePassword);
     possiblePassword.push(choices);
     console.log(possiblePassword);
   }
+  //join and return for the password
   var password = possiblePassword.join("");
   console.log ("your password is: " + password);
   return password;
 }
-// document.getElementById("password").value = password;
+
 
