@@ -51,11 +51,11 @@ console.log(includeSpecialCharacters);
 
  if (includeLowercase == false && includeUppercase==false && includeNumeric ==false && includeSpecialCharacters==false) {
   alert("Please choose at least one of the criteria");
-
+ }
 //create the statements for the users to choose or not to choose from the types of pw
 //user just choose one option out of 4
 if (includeLowercase) {
-  possiblePassword= lowerCase;
+  userChoices= lowerCase;
   console.log(userChoices);
 }
   else if (includeNumeric) {
@@ -127,13 +127,14 @@ if (includeLowercase && includeUppercase && includeSpecialCharacters) {
   userChoices = lowerCase.concat(upperCase, numeric, specialChar);
     console.log(userChoices);
   }
-  };
-
+  // };
+var choicesArray = userChoices.split("");
   //use for loop for making the random passwords based on the conditions of users
   for (var i = 0; i < passwordLength; i++) {
-    var choices = userChoices[Math.floor(Math.random() * userChoices.length)];
+    var choices = choicesArray[Math.floor(Math.random() * choicesArray.length)];
+    console.log(possiblePassword);
     possiblePassword.push(choices);
-    console.log(choices);
+    console.log(possiblePassword);
   }
   var password = possiblePassword.join("");
   console.log ("your password is: " + password);
